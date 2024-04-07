@@ -39,15 +39,24 @@ public class Patente {
     }
 
     public void setLetrasInicioPatente(String letrasPatente) {
-        if (letrasPatente.length() < 3) {
+        if (validarLongitudPatente(letrasPatente)) {
             this.letrasInicioPatente = letrasPatente;
         } else {
             System.out.println("Letras de Patente Inválida");
         }
     }
 
-    public void setLetrasFinPatente(String letrasFinPatente) {
-        this.letrasFinPatente = letrasFinPatente;
+    public void setLetrasFinPatente(String letrasPatente) {
+        if (validarLongitudPatente(letrasPatente)) {
+            this.letrasFinPatente = letrasPatente;
+        } else {
+            System.out.println("Letras de Patente Inválida");
+        }
+    }
+
+    public boolean validarLongitudPatente(String letrasPatente) {
+        return letrasPatente.length() < 3;
+
     }
 
 }
