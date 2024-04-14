@@ -12,7 +12,6 @@ public class Rectangulo extends Figura{
         this.altura = altura;
     }
     
-
     public double getAltura() {
         return altura;
     }
