@@ -12,8 +12,16 @@ public class Punto {
         this.y = y;
     }
 
+    /*public float getPunto(){
+    return x,y;
+    }*/
     public float getX() {
         return x;
+    }
+
+    public String getXY() {
+        String XY = String.valueOf(getX()) + "; " + String.valueOf(getY());
+        return XY;
     }
 
     public float getY() {
