@@ -12,12 +12,17 @@ public class aplicacionArea {
         int qActual = 0;
         Figura[] figuras = new Figura[maxFiguras];
         char opcion = 0;
-
-        System.out.println(opcion);
-        mostrarMenu();
-        opcion = entrada.next().charAt(0);
-        System.out.println(opcion);
-
+        
+        while (opcion != '3') {
+            mostrarMenu();
+            opcion = entrada.next().charAt('0');
+            switch(opcion){
+                case '1':
+                    qActual = cargarFigura(entrada, figuras, qActual, maxFiguras);
+                    break;
+            }
+            
+        }
     }
 
     public static void mostrarMenu() {
@@ -26,10 +31,7 @@ public class aplicacionArea {
         System.out.println("1 Cargar figura");
         System.out.println("2 Mostrar figura");
         System.out.println("3 Salir");
-        
-        char opcion = '0';
-        
-        
+
     }
 
     public static void cargarFigura(Scanner entrada, Figura[] figuras, int qActual, int maxFiguras) {
@@ -38,10 +40,10 @@ public class aplicacionArea {
         System.out.println("a- Cirgulo");
         System.out.println("b- Rectangulo");
         System.out.println("c- Triangulo");
-        
-        if(qActual<maxFiguras){
+
+        if (qActual < maxFiguras) {
             char opcion = entrada.next().charAt('0');
-            switch (opcion){
+            switch (opcion) {
                 case 'a':
                     figuras[qActual++] = cargarCirculo(entrada);
                     break;
@@ -50,7 +52,7 @@ public class aplicacionArea {
                     break;
                 case 'c':
                     figuras[qActual++] = cargarTriangulo(entrada);
-                    break;            
+                    break;
                 default:
                     System.out.println("Opcion no valida");
             }
@@ -73,19 +75,19 @@ public class aplicacionArea {
         float base = entrada.nextFloat();
         System.out.println("Ingresá la altura del rectangulo");
         float altura = entrada.nextFloat();
-        Rectangulo rectangulo = new Rectangulo(base, altura , nombre);
+        Rectangulo rectangulo = new Rectangulo(base, altura, nombre);
         return rectangulo;
     }
-    
-        public static Triangulo cargarTriangulo(Scanner entrada) {
+
+    public static Triangulo cargarTriangulo(Scanner entrada) {
         System.out.println("Ingresá el nombre del triangulo");
         String nombre = entrada.nextLine();
         System.out.println("Ingresá la base del triangulo");
         float base = entrada.nextFloat();
         System.out.println("Ingresá la altura del triangulo");
         float altura = entrada.nextFloat();
-        Triangulo triangulo = new Triangulo(base, altura , nombre);
+        Triangulo triangulo = new Triangulo(base, altura, nombre);
         return triangulo;
     }
-    
+
 }
