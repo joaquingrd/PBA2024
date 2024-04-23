@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package u2_practica_guiada;
 
-/**
- *
- * @author joaqu
- */
+
 public class Circulo extends Figura {
 
     private final double pi = Math.PI;
@@ -32,7 +26,7 @@ public class Circulo extends Figura {
 
     @Override
     public double calcularArea() {
-        return this.pi*this.radio*this.radio;
+        return Math.round(this.pi*this.radio*this.radio);
     }
 
 }

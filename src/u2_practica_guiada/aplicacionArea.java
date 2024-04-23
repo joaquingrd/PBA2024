@@ -1,16 +1,32 @@
 package u2_practica_guiada;
 
+import java.util.Scanner;
+
 public class aplicacionArea {
 
     public static void main(String[] args) {
 
-        Circulo c1 = new Circulo(44.55, "Mi Circulo");
-        Rectangulo r1 = new Rectangulo(30, 40, "Mi Rectangulo");
-        Triangulo t1 = new Triangulo(50, 70, "Mi Triangulo");
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Cuantas figuras deseas ingresar?");
+        int maxFiguras = entrada.nextInt();
+        int figuraActual = 0;
+        Figura Figuras[] = new Figura[maxFiguras];
+        char opcion = 0;
+        
+System.out.println(opcion);
+        mostrarMenu();
+        opcion = entrada.next().charAt(0);
+        System.out.println(opcion);
 
-        System.out.println("El area de " + c1.nombre + " es de: " + c1.calcularArea());
-        System.out.println("El area de " + r1.nombre + " es de: " + r1.calcularArea());
-        System.out.println("El area de " + t1.nombre + " es de: " + t1.calcularArea());
+
+    }
+
+    public static void mostrarMenu() {
+        System.out.println("Menu principal");
+        System.out.println("**************");
+        System.out.println("1 Cargar figura");
+        System.out.println("2 Mostrar figura");
+        System.out.println("3 Salir");
 
     }
 
