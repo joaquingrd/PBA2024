@@ -33,5 +33,17 @@ public class Circulo extends Figura {
     public String toString(){
         return "Este circulo se llama " + this.nombre + " y tiene un area de " + this.radio;
     }
+    @Override
+    public boolean equals(Object obj){
+        // esto se hace para comparar la direccion del objeto que viene como parametro y el if
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()){
+        return false;
+        }
+    Circulo c = (Circulo) obj;
+    return this.radio == c.radio;
+    }
 
 }

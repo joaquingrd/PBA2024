@@ -48,8 +48,8 @@ public class Rectangulo extends Figura{
         if (obj == null || this.getClass() != obj.getClass()){
         return false;
         }
-    Rectangulo t = (Rectangulo) obj;
-    return (this.base == t.base && this.altura == t.altura);
+    Rectangulo r = (Rectangulo) obj;
+    return (this.base == r.base && this.altura == r.altura);
     }
 
 }
