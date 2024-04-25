@@ -35,6 +35,24 @@ public class Triangulo extends Figura{
 
     }
     
+    @Override
+    public String toString(){
+        return "Este rectangulo se llama " + this.nombre + " y tiene un base de " + this.base + " y una altura de " + this.altura;
+    }
+    
+    @Override
+    public boolean equals(Object obj){
+        // esto se hace para comparar la direccion del objeto que viene como parametro y el if
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()){
+        return false;
+        }
+    Triangulo t = (Triangulo) obj;
+    return (this.base == t.base && this.altura == t.altura);
+    }
+    
     
     
 }

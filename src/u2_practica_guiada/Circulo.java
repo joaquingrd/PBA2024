@@ -28,5 +28,10 @@ public class Circulo extends Figura {
     public double calcularArea() {
         return Math.round(this.pi*this.radio*this.radio);
     }
+    
+    @Override
+    public String toString(){
+        return "Este circulo se llama " + this.nombre + " y tiene un area de " + this.radio;
+    }
 
 }
