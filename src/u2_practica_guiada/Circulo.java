@@ -35,7 +35,8 @@ public class Circulo extends Figura {
     }
     @Override
     public boolean equals(Object obj){
-        // esto se hace para comparar la direccion del objeto que viene como parametro y el if
+        // esto se hace para comparar la direccion del objeto que viene como parametro osea naturalmente si se compara el objeto
+        // con el mismo es obvio que es igual y la respuesta es true
         if (this == obj){
             return true;
         }
@@ -43,7 +44,7 @@ public class Circulo extends Figura {
         return false;
         }
     Circulo c = (Circulo) obj;
-    return this.radio == c.radio;
+    return (this.radio == c.radio);
     }
 
 }

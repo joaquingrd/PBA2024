@@ -25,8 +25,12 @@ public class aplicacionArea {
                     break;
                 case '3':
                     qActual = borrarFigura(figuras, qActual);
+                    System.out.println("Se borró la ultuma figura");
+                    break;
+
                 case '4':
                     figurasIguales(figuras, qActual);
+                    break;
 
                 case '9':
                     System.out.println("**************");
@@ -45,8 +49,8 @@ public class aplicacionArea {
         System.out.println("**************");
         System.out.println("1 Cargar figura");
         System.out.println("2 Mostrar figura");
-        System.out.println("3 borrar figura");
-        System.out.println("4 figuras iguales");
+        System.out.println("3 Borrar figura");
+        System.out.println("4 Figuras iguales");
         System.out.println("9 Salir");
     }
 
@@ -92,8 +96,7 @@ public class aplicacionArea {
         entrada.nextLine();
         String nombre = entrada.nextLine();
         System.out.println("Ingresá el radio del circulo");
-        entrada.nextFloat();
-        float radio = entrada.nextFloat();
+        double radio = entrada.nextDouble();
         Circulo circulo = new Circulo(radio, nombre);
         return circulo;
     }
@@ -103,11 +106,9 @@ public class aplicacionArea {
         entrada.nextLine();
         String nombre = entrada.nextLine();
         System.out.println("Ingresá la base del rectangulo");
-        entrada.nextFloat();
-        float base = entrada.nextFloat();
+        double base = entrada.nextDouble();
         System.out.println("Ingresá la altura del rectangulo");
-        entrada.nextFloat();
-        float altura = entrada.nextFloat();
+        double altura = entrada.nextDouble();
         Rectangulo rectangulo = new Rectangulo(base, altura, nombre);
         return rectangulo;
     }
@@ -117,11 +118,9 @@ public class aplicacionArea {
         entrada.nextLine();
         String nombre = entrada.nextLine();
         System.out.println("Ingresá la base del triangulo");
-        entrada.nextFloat();
-        float base = entrada.nextFloat();
+        double base = entrada.nextDouble();
         System.out.println("Ingresá la altura del triangulo");
-        entrada.nextFloat();
-        float altura = entrada.nextFloat();
+        double altura = entrada.nextDouble();
         Triangulo triangulo = new Triangulo(base, altura, nombre);
         return triangulo;
     }
@@ -132,17 +131,21 @@ public class aplicacionArea {
         return qActual;
     }
 
+    @SuppressWarnings("empty-statement")
     private static void figurasIguales(Figura[] figuras, int qActual) {
-        for (int i = 0; i < qActual-1; i++) {
+        boolean noIguales = true;
+        for (int i = 0; i < qActual - 1; i++) {
             for (int j = 1; j < qActual; j++) {
-                if (figuras[i].equals(figuras[j])) {
+                if (figuras[i] != figuras[j] && figuras[i].equals(figuras[j])) {
                     System.out.println("Existen figuras iguales");
-                    System.out.println("La figura en la posición " + i + " es Existen figura en la posición " + j);
-
+                    System.out.println("La figura numero " + (i+1) + " es igual a la figura " + (j+1));
+                    noIguales = false;
                 }
             }
         }
-        System.out.println("No existen figuras iguales");
+        if (noIguales) {
+            System.out.println("No existen figuras iguales");
+        }
 
     }
 

@@ -37,7 +37,7 @@ public class Triangulo extends Figura{
     
     @Override
     public String toString(){
-        return "Este rectangulo se llama " + this.nombre + " y tiene un base de " + this.base + " y una altura de " + this.altura;
+        return "Este triangulo se llama " + this.nombre + " y tiene un base de " + this.base + " y una altura de " + this.altura;
     }
     
     @Override
