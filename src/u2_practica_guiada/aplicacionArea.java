@@ -26,7 +26,7 @@ public class aplicacionArea {
                 case '3':
                     qActual = borrarFigura(figuras, qActual);
                 case '4':
-                    //figurasIguales(figuras, qActual);
+                    figurasIguales(figuras, qActual);
 
                 case '9':
                     System.out.println("**************");
@@ -132,6 +132,18 @@ public class aplicacionArea {
         return qActual;
     }
 
-    
+    private static void figurasIguales(Figura[] figuras, int qActual) {
+        for (int i = 0; i < qActual-1; i++) {
+            for (int j = 1; j < qActual; j++) {
+                if (figuras[i].equals(figuras[j])) {
+                    System.out.println("Existen figuras iguales");
+                    System.out.println("La figura en la posición " + i + " es Existen figura en la posición " + j);
+
+                }
+            }
+        }
+        System.out.println("No existen figuras iguales");
+
+    }
 
 }
