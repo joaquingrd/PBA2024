@@ -13,7 +13,7 @@ public class aplicacionArea {
         Figura[] figuras = new Figura[maxFiguras];
         char opcion = 0;
 
-        while (opcion != '3') {
+        while (opcion != '9') {
             mostrarMenu();
             opcion = entrada.next().charAt(0);
             switch (opcion) {
@@ -24,6 +24,11 @@ public class aplicacionArea {
                     mostrarFigura(figuras, qActual);
                     break;
                 case '3':
+                    qActual = borrarFigura(figuras, qActual);
+                case '4':
+                    //figurasIguales(figuras, qActual);
+
+                case '9':
                     System.out.println("**************");
                     System.out.println("EL PROGRAMA HA FINALIZADO");
                     System.out.println("**************");
@@ -40,8 +45,9 @@ public class aplicacionArea {
         System.out.println("**************");
         System.out.println("1 Cargar figura");
         System.out.println("2 Mostrar figura");
-        System.out.println("3 Salir");
-
+        System.out.println("3 borrar figura");
+        System.out.println("4 figuras iguales");
+        System.out.println("9 Salir");
     }
 
     public static int cargarFigura(Scanner entrada, Figura[] figuras, int qActual, int maxFiguras) {
@@ -119,5 +125,13 @@ public class aplicacionArea {
         Triangulo triangulo = new Triangulo(base, altura, nombre);
         return triangulo;
     }
+
+    public static int borrarFigura(Figura[] figuras, int qActual) {
+        figuras[qActual - 1] = null;
+        qActual--;
+        return qActual;
+    }
+
+    
 
 }
