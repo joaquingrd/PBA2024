@@ -75,6 +75,16 @@ public class Pelicula extends Video {
     return this.titulo + " | " + this.anio + " | " + this.duracion + " | " + this.genero;
     }
     
+    @Override
+    public int compareTo(Video v) {
+        int resultado = 0;
+        if (this.calificacion >= v.calificacion)resultado = 1; // MAYOR
+        if (this.calificacion < v.calificacion)resultado = -1; // MENOR
+        
+
+        return resultado;
+    }
+    
     
     //--- METODOS---
 

@@ -1,6 +1,5 @@
 package TP_Grupo6;
 
-
 import java.util.Scanner;
 
 public class BlockbusterPBA {
@@ -251,28 +250,35 @@ public class BlockbusterPBA {
     }
 
     public static void videosFavoritos(Video[] video, int cantActual) {
-        
-        
 
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Tus peliculas y series favoritas ordenadas por su calificacion");
+        System.out.println("----------------------------------------------------------------");
+        for (int i = 0; i < cantActual - 1; i++) {
+        for (int j = 0; j < cantActual - i - 1; j++) {
+            if (video[j].compareTo(video[j + 1]) < 0) { // Orden descendente
+                Video temp = video[j];
+                video[j] = video[j + 1];
+                video[j + 1] = temp;
+            }
+        }
+    }
         System.out.println("----------------------------------------------------------------");
         System.out.println("Peliculas Favoritas");
         System.out.println("----------------------------------------------------------------");
-for (int i = 0; i < cantActual; i++) {
-            if (video[i] instanceof Pelicula) {
-                if (video[i].calificacion > 7) {
-                    
-                    
-                }
-            } else if (video[i] instanceof Serie) {
-                if (video[i].calificacion > 7) {
-                    
-                    
-                }
+        for (int i = 0; i < cantActual; i++) {
+            if (video[i] instanceof Pelicula && video[i].getCalificacion() > 7) {
+                System.out.println(video[i].titulo + " - Calificación: " + video[i].calificacion);
             }
         }
         System.out.println("----------------------------------------------------------------");
         System.out.println("Series Favoritas");
         System.out.println("----------------------------------------------------------------");
+        for (int i = 0; i < cantActual; i++) {
+            if (video[i] instanceof Serie && video[i].getCalificacion() > 7) {
+                System.out.println(video[i].titulo + " - Calificación: " + video[i].calificacion);
+            }
+        }
     }
 }
 

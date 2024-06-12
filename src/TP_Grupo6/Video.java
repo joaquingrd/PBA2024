@@ -1,12 +1,12 @@
 package TP_Grupo6;
 
-public class Video implements Visualizable,Comparable<Video> {
+public class Video implements Visualizable, Comparable<Video> {
 
     protected String titulo;
     protected int anio;
     protected String genero;
     protected int duracion;
-    protected Boolean visto = false; 
+    protected Boolean visto = false;
     protected int tiempoVisto = 0;
     protected int calificacion;
 
@@ -78,7 +78,9 @@ public class Video implements Visualizable,Comparable<Video> {
     @Override
     public int tiempoVisto(int tiempoVisto) {
         this.tiempoVisto = tiempoVisto;
-        if(this.tiempoVisto > 0) this.visto = true;
+        if (this.tiempoVisto > 0) {
+            this.visto = true;
+        }
         return this.tiempoVisto;
     }
 
@@ -96,11 +98,11 @@ public class Video implements Visualizable,Comparable<Video> {
     @Override
     public int compareTo(Video v) {
         int resultado = 0;
-        if(this.calificacion < v.calificacion)resultado = -1;
-        if(this.calificacion >= v.calificacion)resultado = 1;
+        if (this.calificacion >= v.calificacion)resultado = 1; // MAYOR
+        if (this.calificacion < v.calificacion)resultado = -1; // MENOR
+        
 
         return resultado;
     }
 
-   
 }
