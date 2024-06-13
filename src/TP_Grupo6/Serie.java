@@ -2,10 +2,28 @@ package TP_Grupo6;
 
 public class Serie extends Video {
     private int temporadas;
+    private int capTemp;
     
-    public Serie(String titulo, int anio, String genero, int duracion, int temporadas) {
+    public Serie(String titulo, int anio, String genero, int duracion, int temporadas, int capTemp) {
         super(titulo, anio, genero, duracion);
         this.temporadas = temporadas;
+        this.capTemp = capTemp;
+    }
+
+    public int getTemporadas() {
+        return temporadas;
+    }
+
+    public void setTemporadas(int temporadas) {
+        this.temporadas = temporadas;
+    }
+
+    public int getCapTemp() {
+        return capTemp;
+    }
+
+    public void setCapTemp(int capTemp) {
+        this.capTemp = capTemp;
     }
 
     public String getTitulo() {
@@ -67,5 +85,17 @@ public class Serie extends Video {
     @Override
     public String toString() {
         return this.titulo + " | " + this.anio + " | " + this.temporadas + " temporadas" + " | " + this.genero ;
+    }
+    
+   
+    public int compareCap(Video v){
+         int resultado = 0;
+        if (v instanceof Serie){
+             Serie otraSerie = (Serie) v;
+             if ((this.temporadas*this.capTemp) >= (otraSerie.temporadas*otraSerie.capTemp))resultado = 1; // MAYOR
+             if ((this.temporadas*this.capTemp) < (otraSerie.temporadas*otraSerie.capTemp))resultado = -1; // MENOR   
+    }
+
+        return resultado;
     }
 }

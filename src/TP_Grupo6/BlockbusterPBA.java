@@ -65,6 +65,45 @@ public class BlockbusterPBA {
         System.out.println("***********");
     }
 
+    public static void listadoSubMenu(Scanner entrada, int cantActual, Video[] videos) {
+        System.out.println("---- SELECCIONAR OPCION: ----");
+        System.out.println("**********");
+        System.out.println("1 - Videos vistos");
+        System.out.println("2 - Mis videos pendientes");
+        System.out.println("3 - Mis favoritos");
+        System.out.println("4 - Serie con mas capítulos");
+        System.out.println("5 - Pelicula mas corta");
+        System.out.println("9 - Volver al menu principal");
+        System.out.println("***********");
+
+        int opcion;
+        do {
+            opcion = entrada.nextInt();
+            switch (opcion) {
+                case 1 -> {
+                    videosVistos(videos, cantActual);
+                }
+                case 2 -> {
+                    videosPendientes(videos, cantActual);
+                }
+                case 3 -> {
+                    videosFavoritos(videos, cantActual);
+                }
+                case 4 -> {
+                    serieConMasCapitulos(videos, cantActual);
+                }
+                case 5 -> {
+                }
+                case 6 -> {
+                }
+                case 7 -> {
+                }
+                default ->
+                    System.out.println("Opcion invalida");
+            }
+        } while (opcion != 9);
+    }
+
     public static Pelicula cargarPelicula(Scanner entrada) {
         System.out.println("Ingrese el titulo de la pelicula: ");
         entrada.nextLine();
@@ -93,7 +132,9 @@ public class BlockbusterPBA {
         int duracion = entrada.nextInt();
         System.out.println("Ingrese las temporadas de la serie: ");
         int temporadas = entrada.nextInt();
-        Serie serie = new Serie(titulo, anio, genero, duracion, temporadas);
+        System.out.println("Ingrese la cantidad de capitulos por cada temporada: ");
+        int capTemp = entrada.nextInt();
+        Serie serie = new Serie(titulo, anio, genero, duracion, temporadas, capTemp);
         return serie;
     }
 
@@ -108,46 +149,10 @@ public class BlockbusterPBA {
         int duracion = entrada.nextInt();
         System.out.println("Ingrese la temporada del Capitulo: ");
         int temporadas = entrada.nextInt();
-        Capitulo capitulo = new Capitulo(titulo, anio, genero, duracion, temporadas);
+        System.out.println("Ingrese la temporada del Capitulo: ");
+        int capTemp = entrada.nextInt();
+        Capitulo capitulo = new Capitulo(titulo, anio, genero, duracion, temporadas, capTemp);
         return capitulo;
-    }
-
-    public static void listadoSubMenu(Scanner entrada, int cantActual, Video[] videos) {
-        System.out.println("---- SELECCIONAR OPCION: ----");
-        System.out.println("**********");
-        System.out.println("1 - Videos vistos");
-        System.out.println("2 - Mis videos pendientes");
-        System.out.println("3 - Mis favoritos");
-        System.out.println("4 - Serie con mas capítulos");
-        System.out.println("5 - Pelicula mas corta");
-        System.out.println("9 - Volver al menu principal");
-        System.out.println("***********");
-
-        int opcion;
-        do {
-            opcion = entrada.nextInt();
-            switch (opcion) {
-                case 1 -> {
-                    videosVistos(videos, cantActual);
-                }
-                case 2 -> {
-                    videosPendientes(videos, cantActual);
-                }
-                case 3 -> {
-                    videosFavoritos(videos, cantActual);
-                }
-                case 4 -> {
-                }
-                case 5 -> {
-                }
-                case 6 -> {
-                }
-                case 7 -> {
-                }
-                default ->
-                    System.out.println("Opcion invalida");
-            }
-        } while (opcion != 9);
     }
 
     public static void actualizarPelicula(Scanner entrada, Video[] video, int cantActual) {
@@ -255,14 +260,14 @@ public class BlockbusterPBA {
         System.out.println("Tus peliculas y series favoritas ordenadas por su calificacion");
         System.out.println("----------------------------------------------------------------");
         for (int i = 0; i < cantActual - 1; i++) {
-        for (int j = 0; j < cantActual - i - 1; j++) {
-            if (video[j].compareTo(video[j + 1]) < 0) { // Orden descendente
-                Video temp = video[j];
-                video[j] = video[j + 1];
-                video[j + 1] = temp;
+            for (int j = 0; j < cantActual - i - 1; j++) {
+                if (video[j].compareTo(video[j + 1]) < 0) {
+                    Video temp = video[j];
+                    video[j] = video[j + 1];
+                    video[j + 1] = temp;
+                }
             }
         }
-    }
         System.out.println("----------------------------------------------------------------");
         System.out.println("Peliculas Favoritas");
         System.out.println("----------------------------------------------------------------");
@@ -280,45 +285,28 @@ public class BlockbusterPBA {
             }
         }
     }
-}
 
+    private static void serieConMasCapitulos(Video[] video, int cantActual) {
+       
+    int masCapitulos = -1;
+    for (int i = 0; i < cantActual - 1; i++) {
+        for (int j = 0; j < cantActual - i - 1; j++) {
+            if (video[j] instanceof Serie && video[j + 1] instanceof Serie) {
+                Serie serie1 = (Serie) video[j];
+                Serie serie2 = (Serie) video[j + 1];
 
-/*
-    List<Pelicula> peliculasFavoritas = new ArrayList<>();
-        List<Serie> seriesFavoritas = new ArrayList<>();
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("PBA Blockbuster - Videos pendientes");
-        System.out.println("----------------------------------------------------------------");
-
-        for (int i = 0; i < cantActual; i++) {
-            if (video[i] instanceof Pelicula) {
-                if (video[i].calificacion > 7) {
-                    peliculasFavoritas.add((Pelicula) video[i]);
-                }
-            } else if (video[i] instanceof Serie) {
-                if (video[i].calificacion > 7) {
-                    seriesFavoritas.add((Serie) video[i]);
+                if ((serie1.getTemporadas() * serie1.getCapTemp()) < (serie2.getTemporadas() * serie2.getCapTemp())) {
+                    masCapitulos = j + 1; // Actualizar índice de la serie con más capítulos
                 }
             }
         }
-     
-        Pelicula[] peliculasArray = peliculasFavoritas.toArray(new Pelicula[0]);
-        Serie[] seriesArray = seriesFavoritas.toArray(new Serie[0]);
-        
-        Arrays.sort(peliculasArray);
-        Arrays.sort(seriesArray);
-        
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("Peliculas Favoritas");
-        System.out.println("----------------------------------------------------------------");
-        for (Pelicula pelicula : peliculasArray) {
-            System.out.println("Pelicula: " + pelicula.titulo + " | Calificacion: " + pelicula.calificacion);
-        }
+    }
 
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("Series Favoritas");
-        System.out.println("----------------------------------------------------------------");
-        for (Serie serie : seriesArray) {
-            System.out.println("Serie: " + serie.titulo + " | Calificacion: " + serie.calificacion);
-        }
- */
+    if (masCapitulos != -1) {
+        System.out.println("La serie con mas capitulos es: " + video[masCapitulos].getTitulo());
+    } else {
+        System.out.println("No se encontró ninguna serie en el array.");
+    }
+
+    }
+}

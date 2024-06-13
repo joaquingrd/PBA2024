@@ -4,8 +4,8 @@ package TP_Grupo6;
 
 public class Capitulo extends Serie {
     
-    public Capitulo(String titulo, int anio, String genero, int duracion, int termporadas) {
-        super(titulo, anio, genero, duracion, termporadas);
+    public Capitulo(String titulo, int anio, String genero, int duracion, int termporadas, int capTemp) {
+        super(titulo, anio, genero, duracion, termporadas,capTemp);
     }
 
     public String getTitulo() {

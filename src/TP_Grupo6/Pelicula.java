@@ -2,7 +2,7 @@
 package TP_Grupo6;
 
 
-public class Pelicula extends Video {
+public class Pelicula extends Video  {
     
     //CONSTRUCTOR
     public Pelicula(String titulo, int anio, String genero, int duracion) {
@@ -84,6 +84,7 @@ public class Pelicula extends Video {
 
         return resultado;
     }
+   
     
     
     //--- METODOS---
