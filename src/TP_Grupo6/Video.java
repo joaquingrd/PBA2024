@@ -2,13 +2,13 @@ package TP_Grupo6;
 
 public class Video implements Visualizable, Comparable<Video> {
 
-    protected String titulo;
+protected String titulo;
     protected int anio;
     protected String genero;
     protected int duracion;
     protected Boolean visto = false;
     protected int tiempoVisto = 0;
-    protected int calificacion;
+    protected int calificacion = 0;
 
     public Video(String titulo, int anio, String genero, int duracion) {
         this.titulo = titulo;
@@ -74,10 +74,9 @@ public class Video implements Visualizable, Comparable<Video> {
         this.calificacion = calificacion;
     }
 
-//------GETERS Y SETERS------
+//------METODOS------
     @Override
-    public int tiempoVisto(int tiempoVisto) {
-        this.tiempoVisto = tiempoVisto;
+    public int tiempoVisto() {
         if (this.tiempoVisto > 0) {
             this.visto = true;
         }
@@ -85,7 +84,7 @@ public class Video implements Visualizable, Comparable<Video> {
     }
 
     @Override
-    public int ponerCalificacion(int calificacion) {
+    public int ponerCalificacion() {
         if (calificacion >= 0 && calificacion <= 10) {
             setCalificacion(calificacion);
         } else {
@@ -104,5 +103,25 @@ public class Video implements Visualizable, Comparable<Video> {
 
         return resultado;
     }
+    
+    public String minutosEnHoras(int duracion) {
+         if (duracion < 0) {
+            throw new IllegalArgumentException("Los minutos no pueden ser negativos");
+        }
+
+        int horas = duracion / 60;
+        int minutosRestantes = duracion % 60;
+
+        String resultado = "";
+        if (horas > 0) {
+            resultado = horas + "h ";
+        }
+        if (minutosRestantes > 0 || horas == 0) {
+            resultado = resultado + minutosRestantes + "min";
+        }
+
+        return resultado;
+    }
+
 
 }

@@ -4,73 +4,48 @@ package TP_Grupo6;
 
 public class Capitulo extends Serie {
     
-    public Capitulo(String titulo, int anio, String genero, int duracion, int termporadas, int capTemp) {
-        super(titulo, anio, genero, duracion, termporadas,capTemp);
-    }
+   protected int temporada;
+   protected int numeroCapitulo;
+   protected int iSerie;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public int getAnio() {
-        return anio;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
+    public Capitulo(int iSerie, String titulo, int anio, String genero, int temporadas, int capTemp, int duracion, int temporada, int numeroCapitulo) {
+        super(titulo, anio, genero, temporadas, capTemp);
+        this.iSerie = iSerie;
         this.duracion = duracion;
+        this.temporada = temporada;
+        this.numeroCapitulo = numeroCapitulo;
     }
 
-    public Boolean getVisto() {
-        return visto;
+    // Getters y Setters
+    public int getTemporada() {
+        return temporada;
     }
 
-    public void setVisto(Boolean visto) {
-        this.visto = visto;
+    public void setTemporada(int temporada) {
+        this.temporada = temporada;
     }
 
-    public int getTiempoVisto() {
-        return tiempoVisto;
+    public int getNumeroCapitulo() {
+        return numeroCapitulo;
     }
 
-    public void setTiempoVisto(int tiempoVisto) {
-        this.tiempoVisto = tiempoVisto;
+    public void setNumeroCapitulo(int numeroCapitulo) {
+        this.numeroCapitulo = numeroCapitulo;
+    }
+    public int getiSerie() {
+        return iSerie;
     }
 
-    public int getCalificacion() {
-        return calificacion;
+    public void setiSerie(int iSerie) {
+        this.iSerie = iSerie;
     }
 
-    public void setCalificacion(int calificacion) {
-        this.calificacion = calificacion;
-    }
-    
     //--- METODOS---
     @Override
-    public String toString(){
-    return this.titulo + " | " + this.anio + " | " + this.duracion + " | " + this.genero;
+    public String toString() {
+        return "Titulo del capitulo: " + this.titulo + " | " + "Anio: " + this.anio + " | " + "Duracion: " + minutosEnHoras(this.duracion) + " | " + "Genero: " + this.genero;
     }
+
     
-    
-    //--- METODOS---
     
 }

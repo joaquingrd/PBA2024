@@ -1,13 +1,17 @@
 package TP_Grupo6;
 
 public class Serie extends Video {
-    private int temporadas;
-    private int capTemp;
-    
-    public Serie(String titulo, int anio, String genero, int duracion, int temporadas, int capTemp) {
-        super(titulo, anio, genero, duracion);
+    protected int temporadas;
+    protected int capTemp;
+    protected Capitulo[] capitulos;
+    protected int numCapitulos;
+
+    public Serie(String titulo, int anio, String genero, int temporadas, int capTemp) {
+        super(titulo, anio, genero, 0); 
         this.temporadas = temporadas;
+        this.numCapitulos = 0;
         this.capTemp = capTemp;
+        this.capitulos = new Capitulo[temporadas * capTemp];
     }
 
     public int getTemporadas() {
@@ -26,76 +30,41 @@ public class Serie extends Video {
         this.capTemp = capTemp;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public Capitulo[] getCapitulos() {
+        return capitulos;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public int getAnio() {
-        return anio;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
-
-    public Boolean getVisto() {
-        return visto;
-    }
-
-    public void setVisto(Boolean visto) {
-        this.visto = visto;
-    }
-
-    public int getTiempoVisto() {
-        return tiempoVisto;
-    }
-
-    public void setTiempoVisto(int tiempoVisto) {
-        this.tiempoVisto = tiempoVisto;
-    }
-
-    public int getCalificacion() {
-        return calificacion;
-    }
-
-    public void setCalificacion(int calificacion) {
-        this.calificacion = calificacion;
+    public void setCapitulos(Capitulo[] capitulos) {
+        this.capitulos = capitulos;
     }
     
     @Override
     public String toString() {
-        return this.titulo + " | " + this.anio + " | " + this.temporadas + " temporadas" + " | " + this.genero ;
-    }
-    
-   
-    public int compareCap(Video v){
-         int resultado = 0;
-        if (v instanceof Serie){
-             Serie otraSerie = (Serie) v;
-             if ((this.temporadas*this.capTemp) >= (otraSerie.temporadas*otraSerie.capTemp))resultado = 1; // MAYOR
-             if ((this.temporadas*this.capTemp) < (otraSerie.temporadas*otraSerie.capTemp))resultado = -1; // MENOR   
+        return "Titulo: " + this.titulo + " | " + "Anio: " + this.anio + " | "  + this.temporadas + " temporadas" + " | " + "Genero: " + this.genero; 
     }
 
+    public int agregarCapitulo(Capitulo capitulo) {
+        if (numCapitulos < capitulos.length) {
+            capitulos[numCapitulos] = capitulo;
+            this.duracion += capitulo.getDuracion(); 
+            numCapitulos++;
+        }
+        return numCapitulos;
+    }
+    
+    public int compareCap(Video v) {
+        int resultado = 0;
+        if (v instanceof Serie) {
+            Serie otraSerie = (Serie) v;
+            int totalCapsThis = this.temporadas * this.capTemp;
+            int totalCapsOtra = otraSerie.temporadas * otraSerie.capTemp;
+            if (totalCapsThis > totalCapsOtra) {
+                resultado = 1; // MAYOR
+            }
+            if (totalCapsThis < totalCapsOtra) {
+                resultado = -1; // MENOR
+            }
+        }
         return resultado;
     }
 }
