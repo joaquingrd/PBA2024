@@ -1,0 +1,4 @@
+parcialpromocion_miguelangelparra.Empleado
+parcialpromocion_miguelangelparra.Empresa
+parcialpromocion_miguelangelparra.Tarea
+parcialpromocion_miguelangelparra.Proyecto

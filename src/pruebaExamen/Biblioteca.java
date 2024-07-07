@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+ 
 package pruebaExamen;
 
-/**
- *
- * @author joaqu
- */
+import java.util.*;
+
+
 public class Biblioteca {
+    private List <Libro> libros = new ArrayList();
+    private List <Cliente> clientes = new ArrayList();
+    
+    public void prestarLibro(Libro unLibro, Cliente unCliente){
+    unLibro.setEstado(true);
+    unCliente.addLibros(unLibro);
+    }
     
 }
